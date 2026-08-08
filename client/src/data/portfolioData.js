@@ -136,6 +136,7 @@ export const projects = [
     ],
     github: 'https://github.com/Alexisontheway/movie-recommender',
     demo: 'https://movie-recommender-ten-weld.vercel.app',
+    status: 'Live',
     featured: true,
     category: 'ai',
   },
@@ -154,8 +155,9 @@ export const projects = [
       'Structured Excel reports for stakeholder review',
       'Batch processing for large-scale datasets',
     ],
-    github: 'https://github.com/Alexisontheway', 
+    github: 'https://github.com/Alexisontheway/intelligent-data-cleaning-tool',
     demo: 'https://intelligent-data-cleaning-tool.onrender.com/',
+    status: 'Live',
     featured: true,
     category: 'automation',
   },
@@ -176,10 +178,32 @@ export const projects = [
     ],
     github: 'https://github.com/Alexisontheway/Daily-Task-App',
     demo: 'https://daily-task-app-2.onrender.com',
+    status: 'Live',
     featured: true,
     category: 'fullstack',
+  },
+  {
+    id: 'applyai',
+    title: 'ApplyAI',
+    subtitle: 'AI Job-Search Co-Pilot',
+    description:
+      'An AI-powered job-search campaign manager that turns the manual grind of applying into a data-driven pipeline — track applications on a kanban board, match your resume to job descriptions with machine learning, and auto-draft tailored cover letters with a local LLM.',
+    impact: 'End-to-end job-search campaign manager with ML resume-JD matching, OSINT job discovery, and zero-cost, private LLM cover letters.',
+    techStack: ['React', 'TypeScript', 'Hono', 'Drizzle ORM', 'PostgreSQL', 'FastAPI', 'Supabase', 'Ollama'],
+    features: [
+      'Pipeline kanban: drag applications through 7 stages, from Saved to Offer',
+      'ML resume-JD matching with Sentence Transformers — semantic scoring, not keyword counting',
+      'OSINT job discovery across LinkedIn, Indeed, Naukri, and career pages',
+      'Local LLM cover-letter generation via Ollama — zero API cost, fully private',
+      'Analytics: funnel metrics, board ROI, and best-performing resume',
+    ],
+    github: 'https://github.com/Alexisontheway/applyai',
+    demo: null,
+    status: 'Source',
+    featured: true,
+    category: 'automation',
   },]
- 
+
   ;
 
 export const experience = [

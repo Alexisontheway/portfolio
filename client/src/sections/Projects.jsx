@@ -55,6 +55,17 @@ export default function Projects() {
                           Featured
                         </span>
                       )}
+                      {project.status && (
+                        <span
+                          className={`text-[10px] font-mono px-2 py-0.5 uppercase tracking-widest border ${
+                            project.status === 'Live'
+                              ? 'text-emerald-400 border-emerald-400/40'
+                              : 'text-gray-400 border-gray-500/40'
+                          }`}
+                        >
+                          {project.status}
+                        </span>
+                      )}
                     </div>
                     <h3 className="text-xl font-bold text-white group-hover:text-neon transition-colors duration-300">
                       {project.title}
@@ -62,18 +73,6 @@ export default function Projects() {
                     <p className="text-neon/60 text-sm font-mono mt-1">{project.subtitle}</p>
                   </div>
 
-                  <div className="flex gap-3">
-                    {project.github && (
-                      <a href={project.github} target="_blank" rel="noopener noreferrer" aria-label={`${project.title} GitHub repository`} className="text-gray-600 hover:text-neon transition-colors">
-                        <Github size={18} />
-                      </a>
-                    )}
-                    {project.demo && (
-                      <a href={project.demo} target="_blank" rel="noopener noreferrer" aria-label={`${project.title} live demo`} className="text-gray-600 hover:text-neon transition-colors">
-                        <ExternalLink size={18} />
-                      </a>
-                    )}
-                  </div>
                 </div>
 
                 <p className="text-gray-500 text-sm leading-relaxed mb-4">{project.description}</p>
@@ -100,6 +99,36 @@ export default function Projects() {
                       {tech}
                     </span>
                   ))}
+                </div>
+
+                <div className="mt-6 flex flex-wrap gap-3">
+                  {project.github && (
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`${project.title} source code on GitHub`}
+                      className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest border border-neon/40 text-neon px-4 py-2 hover:bg-neon hover:text-dark-900 transition-colors"
+                    >
+                      <Github size={14} /> View Code
+                    </a>
+                  )}
+                  {project.demo && (
+                    <a
+                      href={project.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`${project.title} live demo`}
+                      title={
+                        project.demo.includes('render.com')
+                          ? 'Free-tier demo — first load may take ~30s to wake'
+                          : undefined
+                      }
+                      className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest bg-neon text-dark-900 px-4 py-2 hover:bg-transparent hover:text-neon border border-neon transition-colors"
+                    >
+                      <ExternalLink size={14} /> Live Demo
+                    </a>
+                  )}
                 </div>
               </div>
             </div>

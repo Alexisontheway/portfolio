@@ -68,8 +68,8 @@ A full-stack personal portfolio engineered for performance, accessibility, and v
 ### 1 — Clone & Install
 
 ```bash
-git clone https://github.com/Alexisontheway/PORTFOLIO.git
-cd PORTFOLIO
+git clone https://github.com/Alexisontheway/portfolio.git
+cd portfolio
 
 # Frontend
 cd client && npm install
