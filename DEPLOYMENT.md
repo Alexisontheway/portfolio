@@ -38,7 +38,7 @@ Save the connection string — you'll need it for the backend deployment.
 PORT=5000
 NODE_ENV=production
 DATABASE_URL=<your-neon-connection-string>
-CLIENT_URL=https://your-frontend-domain.vercel.app
+CLIENT_URL=https://portfolio-de9q.onrender.com
 SMTP_HOST=smtp.gmail.com
 SMTP_PORT=587
 SMTP_USER=your-email@gmail.com
@@ -52,27 +52,25 @@ Note the deployed URL (e.g., `https://portfolio-api-xxxx.onrender.com`)
 
 ---
 
-## 3. Frontend — Vercel
+## 3. Frontend — build & serve
 
-1. Sign up at [vercel.com](https://vercel.com)
-2. Click **Add New** → **Project**
-3. Import your GitHub repo
-4. Configure:
+The frontend is a static Vite build (`client/dist`). It is currently served at **`https://portfolio-de9q.onrender.com`**.
 
-| Setting            | Value                        |
-|-------------------|------------------------------|
-| **Root Directory** | `client`                     |
-| **Framework**      | Vite                         |
-| **Build Command**  | `npm run build`              |
-| **Output Dir**     | `dist`                       |
+1. Build the frontend:
 
-5. Add **Environment Variable**:
-
-```
-VITE_API_URL=https://portfolio-api-xxxx.onrender.com
+```bash
+cd client && npm install && npm run build
 ```
 
-6. Click **Deploy**
+2. Point the production build at the API. The contact form posts to `VITE_API_URL || '/api/contact'`:
+
+```
+VITE_API_URL=https://<your-api-service-url>.onrender.com
+```
+
+3. Serve `client/dist` and confirm the API URL is reachable from the browser.
+
+> ⚠️ **Important:** the contact form is a silent no-op unless a real API backend answers at `VITE_API_URL` — the static host alone returns a 200 with an empty body for `POST /api/contact`. If the backend is not deployed, the form will appear to succeed but nothing is saved or emailed.
 
 ---
 
@@ -87,13 +85,9 @@ VITE_API_URL=https://portfolio-api-xxxx.onrender.com
 
 ## 5. Custom Domain (Optional)
 
-### Vercel (Frontend)
-1. Go to your project → **Settings** → **Domains**
-2. Add your domain and follow DNS instructions
-
-### Render (Backend)
+### Render (site or API)
 1. Go to your service → **Settings** → **Custom Domains**
-2. Add `api.yourdomain.com` and configure DNS
+2. Add your domain (e.g., `portfolio.yourdomain.com` for the site, `api.yourdomain.com` for the API) and configure DNS
 
 ---
 
