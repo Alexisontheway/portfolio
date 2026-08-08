@@ -53,7 +53,7 @@ A full-stack personal portfolio engineered for performance, accessibility, and v
 | **Backend** | Node.js 20, Express 4, Nodemailer |
 | **Database** | PostgreSQL 16 (hosted on [Neon](https://neon.tech)) |
 | **Security** | Helmet, express-rate-limit, express-validator, custom `escapeHtml` |
-| **Deployment** | Vercel (frontend) · Render (backend) |
+| **Deployment** | Render (full-stack) · Neon (PostgreSQL) |
 | **Typography** | Inter (body) · JetBrains Mono (code / labels) |
 
 ---
@@ -217,28 +217,18 @@ Every visual decision reinforces the same idea: **signal over noise**. No tertia
 
 | Service | Role |
 |---|---|
-| [Vercel](https://vercel.com) | Frontend hosting (auto-deploys from `main`) |
-| [Render](https://render.com) | Backend hosting |
+| [Render](https://render.com) | Full-stack hosting — the live app at `portfolio-de9q.onrender.com` |
 | [Neon](https://neon.tech) | Managed PostgreSQL |
 
-A **GitHub Actions** workflow (`.github/workflows/deploy.yml`) automates the full pipeline on push to `main`:
-
-1. Installs dependencies for `client/` and `server/`
-2. Builds the frontend production bundle
-3. Deploys the backend to Render
-4. Deploys the frontend to Vercel
-
-**Required GitHub Secrets:**
-
-```
-RENDER_API_KEY
-RENDER_SERVICE_ID
-VERCEL_TOKEN
-VERCEL_ORG_ID
-VERCEL_PROJECT_ID
-```
+> **Note:** The live site runs on a free-tier Render instance and may take **~30s to wake** on first load.
 
 For manual deployment steps, see [`DEPLOYMENT.md`](./DEPLOYMENT.md).
+
+---
+
+## ⚖️ An honest trade-off
+
+The design is a deliberate constraint, not a default: pitch-black canvas, one electric-yellow accent, no gradients, no photos, no third color. It makes the portfolio unmistakable and it loads fast — but it's also a risk, because it abandons the visual warmth and imagery most portfolios lean on, and a viewer who doesn't connect with the aesthetic won't be won over by the palette alone. Functionally, the contact form depends on free-tier infrastructure end to end — a Render backend that sleeps after idle (~30s cold start) and SMTP delivery via an app password — so a first submission can be slow even though subsequent ones are fast, and the 5-requests-per-15-minutes rate limit is a blunt instrument that could briefly reject a genuine burst. These trade-offs were accepted deliberately: reliability and performance over comfort, signal over decoration.
 
 ---
 
