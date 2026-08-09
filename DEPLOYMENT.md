@@ -35,16 +35,16 @@ Save the connection string — you'll need it for the backend deployment.
 5. Add **Environment Variables**:
 
 ```
-PORT=5000
+PORT=4000
 NODE_ENV=production
 DATABASE_URL=<your-neon-connection-string>
 CLIENT_URL=https://portfolio-de9q.onrender.com
-SMTP_HOST=smtp.gmail.com
-SMTP_PORT=587
-SMTP_USER=your-email@gmail.com
-SMTP_PASS=your-app-password
-NOTIFICATION_EMAIL=priyanshualex@gmail.com
+NOTIFICATION_EMAIL=you@gmail.com
+RESEND_API_KEY=re_xxxxxxxxxxxx
+EMAIL_FROM=onboarding@resend.dev
 ```
+
+> ⚠️ **Email requires Resend, not SMTP.** Render's free-tier instances block all outbound SMTP (verified: Gmail/Sendinblue on ports 25/465/587 all time out), so the contact form's notification email is sent over the **Resend HTTPS API** (`RESEND_API_KEY`). Sign up at [resend.com](https://resend.com), create an API key, and set it here. With no verified domain, use `onboarding@resend.dev` as `EMAIL_FROM` (works for notifying your own inbox). The SMTP vars below are only used as a fallback when running the server locally.
 
 6. Click **Deploy**
 
@@ -74,12 +74,23 @@ VITE_API_URL=https://<your-api-service-url>.onrender.com
 
 ---
 
-## 4. Gmail SMTP Setup (for email notifications)
+## 4. Email Notifications (Resend)
+
+Production notifications are sent via the [Resend](https://resend.com) HTTPS API (Render's free tier blocks outbound SMTP).
+
+1. Sign up at [resend.com](https://resend.com) (free tier: 3,000 emails/mo)
+2. Open **API Keys** → **Create API Key** → copy the `re_...` key
+3. Set `RESEND_API_KEY` on the backend service
+4. Without a verified domain, set `EMAIL_FROM=onboarding@resend.dev` — sends to your own inbox work immediately. To send from a branded address, verify a domain in Resend and set `EMAIL_FROM=hello@yourdomain.com`
+
+### Gmail SMTP (local development only)
+
+The server keeps a nodemailer/SMTP fallback for local runs (Gmail blocks nothing from your own machine):
 
 1. Go to [Google Account Security](https://myaccount.google.com/security)
-2. Enable **2-Step Verification**
-3. Go to **App Passwords** → Generate one for "Mail"
-4. Use the 16-character password as `SMTP_PASS`
+2. Enable **2-Step Verification** → **App Passwords** → generate one for "Mail"
+3. Use the 16-character password as `SMTP_PASS` in `server/.env`
+4. Set `SMTP_HOST=smtp.gmail.com`, `SMTP_PORT=587`, `SMTP_USER=you@gmail.com`
 
 ---
 
@@ -111,15 +122,17 @@ VITE_API_URL=https://<your-api-service-url>.onrender.com
 
 | Variable             | Description                          | Required |
 |---------------------|--------------------------------------|----------|
-| `PORT`              | Server port (default: 5000)          | No       |
+| `PORT`              | Server port (default: 4000)          | No       |
 | `NODE_ENV`          | `production` / `development`         | Yes      |
 | `DATABASE_URL`      | PostgreSQL connection string         | Yes      |
 | `CLIENT_URL`        | Frontend URL for CORS                | Yes      |
-| `SMTP_HOST`         | SMTP server host                     | No       |
-| `SMTP_PORT`         | SMTP server port                     | No       |
-| `SMTP_USER`         | SMTP username/email                  | No       |
-| `SMTP_PASS`         | SMTP password/app password           | No       |
-| `NOTIFICATION_EMAIL`| Where to receive notifications       | No       |
+| `RESEND_API_KEY`    | Resend API key (`re_...`) — sends production notifications over HTTPS | Yes |
+| `EMAIL_FROM`        | Sender address (e.g. `onboarding@resend.dev` until a domain is verified) | No |
+| `NOTIFICATION_EMAIL`| Where to receive notifications       | Yes      |
+| `SMTP_HOST`         | SMTP host (local-dev fallback only)  | No       |
+| `SMTP_PORT`         | SMTP port (local-dev fallback only)  | No       |
+| `SMTP_USER`         | SMTP username/email (local-dev only) | No       |
+| `SMTP_PASS`         | SMTP password/app password (local-dev only) | No |
 
 ### Frontend (`client/.env`)
 
