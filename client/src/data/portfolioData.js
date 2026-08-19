@@ -32,7 +32,7 @@ export const systemProfile = Object.freeze({
   highlights: [
     { value: '4+', label: 'Applications' },
     { value: '100+', label: 'Leads / Day' },
-    { value: '8.89', label: 'CGPA' },
+    { value: '8.95', label: 'CGPA' },
   ],
 });
 
