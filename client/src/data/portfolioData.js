@@ -117,6 +117,28 @@ export const skillCategories = [
 ];
 export const projects = [
   {
+    id: 'jarvis',
+    title: 'Jarvis',
+    subtitle: 'Local-First AI Assistant with Voice',
+    description:
+      'A modular personal AI assistant running 100% on your PC — no cloud, no API keys. Text/voice chat, web search, file ops, reminders, and hands-free wake word ("hey jarvis") or clap detection. Built as an event-bus OS where 7 isolated modules communicate only through typed async events.',
+    impact: 'Zero-cost, fully private AI assistant with voice I/O, local LLM (Ollama), and tool-calling — all in one Python process.',
+    techStack: ['Python', 'FastAPI', 'Ollama', 'faster-whisper', 'Piper TTS', 'openWakeWord', 'SQLite', 'DuckDuckGo', 'sounddevice'],
+    features: [
+      'Event-bus architecture: 7 modules (brain, tools, memory, speech, wake, web, kernel) with zero inter-module imports — swap any component in isolation',
+      'Hands-free voice: wake-phrase ("hey jarvis") + clap detection (crest-factor signal analysis) → records command → local STT/TTS roundtrip',
+      'Tool-calling agent loop with per-conversation locks, gated conversation resets (LLM requests, user confirms), and Ollama-native streaming with think:false for 3x speed',
+      'Persistent memory: SQLite-backed conversation history + long-term facts + reminders, auto-expires stale threads',
+      'Real-time dashboard: SSE streams tokens + live orb state (listening→thinking→speaking→idle) driven by actual module events',
+      '30+ test suite: mock LLM providers, HTTP transports, fake audio — zero external deps in CI',
+    ],
+    github: 'https://github.com/Alexisontheway/Jarvis',
+    demo: null,
+    status: 'Source',
+    featured: true,
+    category: 'ai',
+  },
+  {
     id: "movie-recommender",
     title: 'Wanna Watch',
     subtitle: 'AI-Powered Movie Discovery Platform',
