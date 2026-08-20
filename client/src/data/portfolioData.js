@@ -254,7 +254,7 @@ export const education = [
     institution: 'Swami Vivekananda University',
     location: 'Kolkata, India',
     period: '2024 – 2027 (Expected)',
-    grade: 'CGPA: 8.89 / 10',
+    grade: 'CGPA: 8.95 / 10',
     type: 'Undergraduate',
   },
   {
