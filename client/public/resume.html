@@ -224,7 +224,7 @@
 
   <h2 class="section-title">Professional Summary</h2>
   <div class="summary">
-    Analytical and detail-oriented Software Engineer specializing in full-stack web development, relational database design (PostgreSQL, MySQL), and intelligent automation. Proven capability in constructing high-performance React user interfaces, scalable Node.js/Express API backends, and Python-driven machine learning microservices. Strong academic record (8.89 CGPA) combined with technical internship experience designing data pipelines and automating workflows.
+    Analytical and detail-oriented Software Engineer specializing in full-stack web development, relational database design (PostgreSQL, MySQL), and intelligent automation. Proven capability in constructing high-performance React user interfaces, scalable Node.js/Express API backends, and Python-driven machine learning microservices. Strong academic record (8.95 CGPA) combined with technical internship experience designing data pipelines and automating workflows.
   </div>
 
   <h2 class="section-title">Core Technical Skills</h2>
@@ -253,7 +253,23 @@
   </div>
 
   <h2 class="section-title">Projects</h2>
-  
+
+  <div class="project-entry">
+    <div class="entry-header">
+      <div>
+        <span class="entry-company">Jarvis</span> — <span class="entry-title">Local-First AI Assistant with Voice</span>
+      </div>
+      <span class="entry-date">Python, FastAPI, Ollama, Voice AI</span>
+    </div>
+    <div class="entry-tech">Tech Stack: Python, FastAPI, Ollama, faster-whisper, Piper TTS, openWakeWord, SQLite</div>
+    <ul class="bullets">
+      <li>Architected a modular AI assistant OS where 7 isolated modules (brain, tools, memory, speech, wake, web, kernel) communicate exclusively through typed async events on an in-process event bus — zero inter-module imports — enabling independent replacement of any component.</li>
+      <li>Engineered hands-free voice interaction combining wake-phrase detection ("hey jarvis") and clap detection (crest-factor signal analysis distinguishing impulsive claps from sustained speech) with local STT/TTS roundtrips, achieving full voice I/O with zero cloud APIs and zero cost.</li>
+      <li>Built a tool-calling agent loop with per-conversation concurrency locks preventing token interleaving, gated conversation resets requiring explicit user confirmation before wiping history, and Ollama-native streaming with think:false for ~3x faster responses on CPU.</li>
+      <li>Validated with a 30+ test suite using mock LLM providers, HTTP transports, and fake audio to ensure zero external dependencies in CI.</li>
+    </ul>
+  </div>
+
   <div class="project-entry">
     <div class="entry-header">
       <div>
@@ -300,20 +316,6 @@
     </ul>
   </div>
 
-  <h2 class="section-title">Hackathons &amp; Competitions</h2>
-  <div class="competition-entry">
-    <div class="entry-header">
-      <div>
-        <span class="entry-company">Selected Finalist / Next-Round Competitor</span>
-      </div>
-      <span class="entry-date">2023 – 2025</span>
-    </div>
-    <ul class="bullets">
-      <li>Competed in institutional and regional hackathons, pitching and developing rapid-prototype software solutions under tight constraints.</li>
-      <li>Engineered working backend code and schema designs during 24-48 hour coding sprints, collaborating in multi-disciplinary teams.</li>
-    </ul>
-  </div>
-
   <h2 class="section-title">Education</h2>
   
   <div class="education-entry">
@@ -324,7 +326,7 @@
       <span class="entry-date">2024 – 2027 (Expected)</span>
     </div>
     <ul class="bullets">
-      <li>Grade: CGPA: <strong>8.89 / 10.0</strong></li>
+      <li>Grade: CGPA: <strong>8.95 / 10.0</strong></li>
     </ul>
   </div>
 
